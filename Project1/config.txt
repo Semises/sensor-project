@@ -1,0 +1,2 @@
+[CRITICAL] = 100
+[WARNING] = 70
