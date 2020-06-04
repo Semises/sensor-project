@@ -80,14 +80,14 @@ void CheckThresholdTemp(uint8_t avail_sensors[], uint16_t s_count) {
 		if (SystemMonitor_GetTemp(avail_sensors[i], &temperature) == SUCCESS)
 		{
 			// Check if temperature is over critical threshold
-			if (critical < temperature)
+			if ((SystemMonitor_TempSignals.TEMP_CRITICAL == 0) && (critical < temperature))
 			{
 				SystemMonitor_TempSignals.TEMP_WARNING = 0;
 				SystemMonitor_TempSignals.TEMP_CRITICAL = 1;
 			}
 
 			// Check if temperature is over warning threshold when not over critical
-			else if (warning < temperature)
+			else if ((SystemMonitor_TempSignals.TEMP_WARNING == 0) && (warning < temperature))
 			{
 				SystemMonitor_TempSignals.TEMP_WARNING = 1;
 			}
